@@ -1,138 +1,147 @@
-import React from 'react';
-import Hero from '../components/Hero.tsx';
-import { Link } from 'react-router-dom';
-import { TrendingUp, Star, Clock, Award } from 'lucide-react';
-import MovieCarousel from '../components/MovieCarousel.tsx';
+import React from "react";
+import Hero from "../components/Hero.tsx";
+import { Award, Clock, Star, TrendingUp } from "lucide-react";
+import { Link } from "react-router-dom";
+import MovieCarousel from "../components/MovieCarousel.tsx";
 
+const Home = () => {
+  const trendingMovies = [
+    {
+      id: 1,
+      title: "Dune: Part Two",
+      rating: 8.8,
+      image:
+        "https://images.unsplash.com/photo-1534809027769-b00d750a6bac?auto=format&fit=crop&w=800&q=80",
+      year: 2024,
+      genre: ["Action", "Adventure", "Sci-Fi"],
+    },
+    {
+      id: 2,
+      title: "Poor Things",
+      rating: 8.4,
+      image:
+        "https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=800&q=80",
+      year: 2023,
+      genre: ["Comedy", "Drama", "Romance"],
+    },
+    {
+      id: 3,
+      title: "Oppenheimer",
+      rating: 8.9,
+      image:
+        "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?auto=format&fit=crop&w=800&q=80",
+      year: 2023,
+      genre: ["Biography", "Drama", "History"],
+    },
+    {
+      id: 4,
+      title: "The Batman",
+      rating: 8.5,
+      image:
+        "https://images.unsplash.com/photo-1509347528160-9a9e33742cdb?auto=format&fit=crop&w=800&q=80",
+      year: 2024,
+      genre: ["Action", "Crime", "Drama"],
+    },
+    {
+      id: 5,
+      title: "Killers of the Flower Moon",
+      rating: 8.7,
+      image:
+        "https://images.unsplash.com/photo-1533928298208-27ff66555d8d?auto=format&fit=crop&w=800&q=80",
+      year: 2023,
+      genre: ["Crime", "Drama", "History"],
+    },
+  ];
 
-    const trendingMovies = [
-        
+  const upcomingMovies = [
+    {
+      id: 6,
+      title: "Deadpool 3",
+      rating: 9.1,
+      image:
+        "https://images.unsplash.com/photo-1535016120720-40c646be5580?auto=format&fit=crop&w=800&q=80",
+      year: 2024,
+      genre: ["Action", "Comedy", "Adventure"],
+    },
+    {
+      id: 8,
+      title: "Kingdom of the Planet of the Apes",
+      rating: 8.3,
+      image:
+        "https://images.unsplash.com/photo-1533973860717-d49dfd14cf64?auto=format&fit=crop&w=800&q=80",
+      year: 2024,
+      genre: ["Action", "Adventure", "Drama"],
+    },
+  ];
+
+  return (
+    <div>
+      <Hero />
+      <main className="container mx-auto px-4 py-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+          {[
             {
-                id: 3,
-                title: "Spider-Man: Across the Spider-Verse",
-                rating: 8.6,
-                image: "https://m.media-amazon.com/images/S/pv-target-images/3c7c45988ed34fe4628aed9d51507061434432482279e1b69f8fd11ced6869bf._SX1080_FMjpg_.jpg",
-                year: 2023,
-                genre: ["Action", "Animation", "Adventure"]
+              icon: TrendingUp,
+              label: "Trending",
+              path: "/movies?sort=trending",
+              color: "bg-yellow-500",
             },
             {
-                id: 4,
-                title: "Guardians of the Galaxy Vol. 3",
-                rating: 8.0,
-                image: "https://i.cdn.newsbytesapp.com/images/l257_2851636523743.jpg",
-                year: 2023,
-                genre: ["Action", "Adventure", "Comedy"]
+              icon: Star,
+              label: "Top Rated",
+              path: "/top-rated",
+              color: "bg-purple-500",
             },
             {
-                id: 5,
-                title: "John Wick: Chapter 4",
-                rating: 8.2,
-                image: "https://images.squarespace-cdn.com/content/v1/51b3dc8ee4b051b96ceb10de/d4795c6b-9718-4c52-8d4a-858ce47cd694/review-john-wick-chapter-4-elevates-the-badass-action-franchise-to-a-new-level.jpg",
-                year: 2023,
-                genre: ["Action", "Crime", "Thriller"]
+              icon: Clock,
+              label: "Coming Soon",
+              path: "/coming-soon",
+              color: "bg-blue-500",
             },
             {
-                id: 6,
-                title: "Fast X",
-                rating: 6.8,
-                image: "https://images.alphacoders.com/131/1315896.jpeg",
-                year: 2023,
-                genre: ["Action", "Adventure", "Crime"]
-            }
-    
-    ];
-    
-    const upcomingMovies = [
-        {
-            id: 7,
-            title: "The Conjuring: Last Rites",
-            rating: null,  // No rating yet
-            image: "https://i.ytimg.com/vi/xvakXXeoEho/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCB2U0cqjQNCMC26xwutyQ89q__mQ", // Placeholder image
-            year: 2024,
-            genre: ["Horror", "Thriller", "Mystery"]
-        },
-        {
-            id: 8,
-            title: "Batman: Part 2",
-            rating: null,  // No rating yet
-            image: "https://images.hdqwalls.com/wallpapers/the-batman-2-reckoning-vx.jpg", // Placeholder image
-            year: 2024,
-            genre: ["Action", "Adventure", "Drama"]
-        },
-        {
-            id: 9,
-            title: "Five Nights at Freddy's 2 (FNAF 2)",
-            rating: null,  // No rating yet
-            image: "https://i.ytimg.com/vi/qtXLaNbr0KY/maxresdefault.jpg", // Placeholder image
-            year: 2024,
-            genre: ["Horror", "Mystery", "Thriller"]
-        },
-        {
-            id: 10,
-            title: "Mission: Impossible: Final Reckoning",
-            rating: null,  // No rating yet
-            image: "https://4kwallpapers.com/images/wallpapers/mission-impossible-2560x1440-19890.jpg", // Placeholder image
-            year: 2024,
-            genre: ["Action", "Adventure", "Thriller"]
-        }
-    ];
-    
+              icon: Award,
+              label: "Awards",
+              path: "/awards",
+              color: "bg-red-500",
+            },
+          ].map((category, index) => (
+            <Link
+              key={index}
+              to={category.path}
+              className={`${category.color} p-4 rounded-xl flex items-center justify-center gap-2 hover:opacity-70 transition-opacity`}
+            >
+              <category.icon className="w-5 h-5" />
+              <span className="font-medium">{category.label}</span>
+            </Link>
+          ))}
+        </div>
+        <section className="mb-12">
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-2xl font-bold flex items-center gap-2">
+              <TrendingUp className="w-6 h-6 text-yellow-500" />
+              Trending Now
+            </h2>
+            <Link to="/movies?sort=trending" className="text-yellow-500 hover:text-yellow-400">
+              View All
+            </Link>
+          </div>
+          <MovieCarousel movies={trendingMovies}/>
+        </section>
+        <section className="mb-12">
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-2xl font-bold flex items-center gap-2">
+              <Clock className="w-6 h-6 text-yellow-500" />
+              Coming Soon
+            </h2>
+            <Link to="/coming-soon" className="text-yellow-500 hover:text-yellow-400">
+              View All
+            </Link>
+          </div>
+          <MovieCarousel movies={upcomingMovies}/>
+        </section>
+      </main>
+    </div>
+  );
+};
 
-    const categories = [
-        { icon: TrendingUp, label: "Trending", path: "/movies?sort=trending", color: "bg-yellow-500" },
-        { icon: Star, label: "Top Rated", path: "/top-rated", color: "bg-purple-500" },
-        { icon: Clock, label: "Coming Soon", path: "/coming-soon", color: "bg-blue-500" },
-        { icon: Award, label: "Awards", path: "/awards", color: "bg-red-500" }
-    ];
-
-    
-    const Home = () => {
-        return (
-            <div>
-                <Hero />
-                <main className="px-4 sm:px-8">
-                    {/* Categories Section */}
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8">
-                        {categories.map((category, index) => (
-                            <Link
-                                key={index}
-                                to={category.path}
-                                className={`flex items-center justify-center space-x-2 py-4 px-6 rounded-md text-white ${category.color} hover:bg-opacity-80 transition`}
-                            >
-                                <category.icon className="text-xl" />
-                                <span className="text-lg font-semibold">{category.label}</span>
-                            </Link>
-                        ))}
-                    </div>
-    
-                    {/* Trending Now Section */}
-                    <section className="mt-12">
-                        <div className="flex justify-between items-center mb-4">
-                            <h2 className="text-2xl font-bold text-white flex items-center space-x-2">
-                                <TrendingUp className="text-xl" />
-                                <span>Trending Now</span>
-                            </h2>
-                            <Link to="/movies?sort=trending" className="text-blue-400 hover:text-blue-600">View All</Link>
-                        </div>
-                        <MovieCarousel movies={trendingMovies}/>
-                    </section>
-    
-                    {/* Coming Soon Section */}
-                    <section className="mt-12">
-                        <div className="flex justify-between items-center mb-4">
-                            <h2 className="text-2xl font-bold text-white flex items-center space-x-2">
-                                <Clock className="text-xl" />
-                                <span>Coming Soon</span>
-                            </h2>
-                            <Link to="/coming-soon" className="text-blue-400 hover:text-blue-600">View All</Link>
-                        </div>
-                        <MovieCarousel movies={upcomingMovies}/>
-                    </section>
-    
-                </main>
-            </div>
-        );
-    };
-
-
-    export default Home;    
+export default Home;
